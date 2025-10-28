@@ -1,0 +1,151 @@
+<!doctype html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Katsura Matsuri - Inscrição Cosplay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {margin:0;font-family:'Roboto',sans-serif;background:#f8f9fa;color:#202124;}
+    .container {max-width:800px;margin:20px auto;padding:24px;background:#fff;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);}
+    .banner {height:180px;border-radius:4px;overflow:hidden;background:#e0e0e0;display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+    .banner img{width:100%;height:100%;object-fit:cover;}
+    h1 {font-weight:400;font-size:24px;margin-bottom:8px;}
+    p.subtitle {color:#5f6368;margin-top:0;margin-bottom:24px;font-size:14px;}
+    .field {margin-bottom:24px;}
+    label {display:block;font-weight:500;margin-bottom:8px;}
+    input[type=text], textarea, select {width:100%;padding:12px;border:1px solid #dadce0;border-radius:4px;font-size:16px;outline:none;}
+    input[type=text]:focus, textarea:focus, select:focus{border-color:#1a73e8;box-shadow:0 1px 6px rgba(26,115,232,0.3);}
+    textarea{min-height:70px;resize:vertical;}
+    .two {display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .control-row {display:flex;gap:24px;align-items:center;margin-top:8px;}
+    input[type=radio] {margin-right:6px;}
+    .range-wrap {margin-top:8px;}
+    .range-wrap input[type=range]{width:100%;}
+    .meta {display:flex;justify-content:space-between;font-size:12px;color:#5f6368;margin-top:4px;}
+    button {background:#1a73e8;color:#fff;border:none;padding:12px 20px;border-radius:4px;font-size:14px;cursor:pointer;font-weight:500;}
+    button.ghost{background:#f1f3f4;color:#202124;border:1px solid #dadce0;}
+    .admin-btn{float:right;background:#202124;color:#fff;padding:8px 12px;border-radius:4px;margin-bottom:16px;}
+    #videoModal{margin-top:24px;}
+    #adminView{display:none;}
+    table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px;}
+    th,td{border-bottom:1px solid #e0e0e0;padding:8px;text-align:left;}
+    .note{background:#f1f3f4;padding:12px;border-radius:4px;font-size:13px;color:#3c4043;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="admin-btn" id="adminToggle">Admin</button>
+    <h1>Formulário de Inscrição Adulto – Cosplayers</h1>
+    <p class="subtitle">Katsura Matsuri - Iguape. Preencha os campos abaixo cuidadosamente.</p><!-- Banner carregado automaticamente -->
+<div class="banner"><img src="banner.jpg" alt="Banner Katsura Matsuri"></div>
+
+<form id="katsuraForm">
+  <div class="field">
+    <label>1. Nome completo do participante:</label>
+    <input type="text" id="nome" required placeholder="Seu nome completo">
+  </div>
+
+  <div class="field">
+    <label>2. Nome do personagem que será representado (máx 10 caracteres):</label>
+    <input type="text" id="personagem" maxlength="10" required placeholder="Nome do personagem">
+  </div>
+
+  <div class="field">
+    <label>3. Tempo estimado de apresentação (em minutos, máx 2):</label>
+    <div class="range-wrap">
+      <input type="range" id="tempo" min="0" max="120" value="60">
+      <div class="meta"><span id="tempoLabel">1:00</span><span>Arraste para ajustar</span></div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>4. Anime, jogo ou série de origem:</label>
+    <input type="text" id="origem" placeholder="Ex: Naruto, Overwatch">
+  </div>
+
+  <div class="field">
+    <label>5. Já participou de algum concurso de cosplay antes? Se sim, qual?</label>
+    <input type="text" id="experiencia" placeholder="Se não, deixe em branco">
+  </div>
+
+  <div class="two">
+    <div class="field">
+      <label>6. Você tem alergia a lactose?</label>
+      <div class="control-row">
+        <label><input type="radio" name="lactose" value="Sim"> Sim</label>
+        <label><input type="radio" name="lactose" value="Não" checked> Não</label>
+      </div>
+    </div>
+    <div class="field">
+      <label>7. Qual sotaque você tem? (máx 7 caracteres)</label>
+      <input type="text" id="sotaque" maxlength="7" placeholder="interior">
+    </div>
+  </div>
+
+  <div class="field">
+    <label>8. Seu personagem é alfa, beta ou ômega?</label>
+    <div class="control-row">
+      <label><input type="radio" name="arquetipo" value="Alfa" checked> Alfa</label>
+      <label><input type="radio" name="arquetipo" value="Beta"> Beta</label>
+      <label><input type="radio" name="arquetipo" value="Ômega"> Ômega</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>9. Qual sua opinião sobre eventos?</label>
+    <div class="control-row">
+      <label><input type="radio" name="opniao" value="Sim" checked> Sim</label>
+      <label><input type="radio" name="opniao" value="Não"> Não</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>10. Com quanta frequência você se identifica com Light Yagami?</label>
+    <div class="range-wrap">
+      <input type="range" id="lightFreq" min="0" max="100" value="10">
+      <div class="meta"><span>0 = não me identifico</span><span>100 = me identifico toda hora</span></div>
+    </div>
+  </div>
+
+  <button type="submit">Enviar inscrição</button>
+  <button type="button" class="ghost" id="clearForm">Limpar</button>
+</form>
+
+<!-- Vídeo carregado automaticamente -->
+<div id="videoModal" style="display:none;margin-top:24px">
+  <video id="postVideo" controls style="width:100%;max-height:360px;background:#000">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div id="adminView">
+  <h2>Painel do Administrador</h2>
+  <table id="responsesTable"><thead><tr><th>Data</th><th>Nome</th><th>Personagem</th><th>Tempo</th><th>Origem</th><th>Experiência</th><th>Lactose</th><th>Sotaque</th><th>Arquetipo</th><th>Opinião</th><th>Light%</th></tr></thead><tbody></tbody></table>
+  <button id="deleteAll" class="ghost">Apagar todas respostas</button>
+  <button id="downloadAll">Download CSV</button>
+</div>
+
+  </div>
+  <script>
+    const tempo = document.getElementById('tempo');
+    const tempoLabel = document.getElementById('tempoLabel');
+    const form = document.getElementById('katsuraForm');
+    const postVideo = document.getElementById('postVideo');tempo.addEventListener('input', ()=>{ const s=parseInt(tempo.value,10); const mm=Math.floor(s/60); const ss=s%60; tempoLabel.textContent=`${mm}:${String(ss).padStart(2,'0')}`});
+tempo.dispatchEvent(new Event('input'));
+
+form.addEventListener('submit', e=>{
+  e.preventDefault();
+  const data={date:new Date().toISOString(),nome:document.getElementById('nome').value.trim(),personagem:document.getElementById('personagem').value.trim(),tempo_seconds:parseInt(tempo.value,10),origem:document.getElementById('origem').value.trim(),experiencia:document.getElementById('experiencia').value.trim(),lactose:document.querySelector('input[name="lactose"]:checked')?.value||'',sotaque:document.getElementById('sotaque').value.trim(),arquetipo:document.querySelector('input[name="arquetipo"]:checked')?.value||'',opiniao:document.querySelector('input[name="opniao"]:checked')?.value||'',lightPercent:document.getElementById('lightFreq').value};
+  const key='katsura_responses';
+  const existing=JSON.parse(localStorage.getItem(key)||'[]');
+  existing.push(data);
+  localStorage.setItem(key,JSON.stringify(existing));
+  if(postVideo){document.getElementById('videoModal').style.display='block'; postVideo.play().catch(()=>{});} else{alert('Inscrição enviada!');}
+  form.reset(); tempo.value=60; tempo.dispatchEvent(new Event('input'));
+});
+
+document.getElementById('clearForm').addEventListener('click',()=>{form.reset(); tempo.value=60; tempo.dispatchEvent(new Event('input'));});
+
+const adminToggle
